@@ -1,0 +1,86 @@
+<!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    
+    <p-card *ngFor="let identimon of identimons()" [style]="{ width: '25rem', overflow: 'hidden' }">
+        <ng-template #header>
+            <app-identi-art name={{identimon.name}} />
+        </ng-template>
+        <ng-template #title>{{ identimon.name }}</ng-template>
+         <ng-template #subtitle>{{ identimon.type }}</ng-template>
+        <p>{{ identimon.description }}</p> 
+        <ng-template #footer>
+            <div class="flex gap-4 mt-1">
+                <p-button label="Details" severity="secondary" class="w-full" (onClick)="viewDetails(identimon)" />
+                <p-button label="Select" class="w-full" (onClick)="selectIdentimon(identimon)" /> 
+            </div>
+        </ng-template>
+    </p-card>
+</div> -->
+<div class="flex flex-wrap gap-2 justify-center">
+
+    <p-card *ngFor="let identimon of identimons()" [style]="{ overflow: 'hidden' }"
+        (click)="selectIdentimon(identimon)">
+        <ng-template #header>
+            <app-identi-art id={{identimon.id}} />
+        </ng-template>
+        <ng-template #title>{{ identimon.name }}</ng-template>
+        <ng-template #subtitle>
+            <p-tag severity="contrast" [style]="{ backgroundColor: identimon.stats.rarity.color}"
+                value="{{identimon.stats.rarity.type}}" />
+        </ng-template>
+    </p-card>
+    <div class="w-full flex justify-center mt-10" >
+        <p-button label="Explorar " severity="secondary" (click)="exploreMore()" />
+    </div>
+</div>
+
+<p-dialog [(visible)]="displayDialog" [modal]="true" dismissableMask="true" closable="true" (onHide)="closeDialog()" showHeader="false">
+    <ng-container *ngIf="displayDialog && selectedIdentimon">
+        
+        <div class="flex flex-col items-center" style="margin-bottom: 36px;">
+            <div style="width: 100%">
+                <app-identi-art id="{{selectedIdentimon.id}}" />
+
+            </div>
+            
+            <div class="flex flex-col items-center mb-4">
+                <span style="text-align:center; font-size: 40px; font-weight: 100;">{{ selectedIdentimon.name}}</span>
+            </div>
+            <div class="flex flex-col items-center mb-2">
+                <p-tag severity="contrast" [style]="{ backgroundColor: selectedIdentimon.stats.rarity.color }"
+                    value="{{selectedIdentimon.stats.rarity.type}} [{{selectedIdentimon.stats.rarity.value}}]" />
+            </div>
+            <div style="width: 100%;">
+                <app-identi-stats id="{{selectedIdentimon.id}}" />
+            </div>
+        </div>
+        <div class="grow"></div>
+
+        <div class="flex justify-center">
+            <p-button size="large" icon="pi pi-thumbs-up-fill" label="Contratar" severity="success" (click)="hireIdentimon(selectedIdentimon)" />
+        </div>
+    </ng-container>
+
+</p-dialog>
+
+
+
+
+
+
+
+<!-- <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+    <ng-template #header>
+        <app-identi-art></app-identi-art>
+    </ng-template>
+    <ng-template #title> Advanced Card </ng-template>
+    <ng-template #subtitle> Card subtitle </ng-template>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+    </p>
+    <ng-template #footer>
+        <div class="flex gap-4 mt-1">
+            
+        </div>
+    </ng-template>
+</p-card> -->

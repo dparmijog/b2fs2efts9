@@ -1,0 +1,68 @@
+<div class="flex flex-col gap-2">
+    <div>
+        <span style="font-size: 75%;">Life:</span>
+        <p-progressbar [value]="life" color="#4caf50" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.life}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+
+    <div>
+        <span style="font-size: 75%;">Defense:</span>
+        <p-progressbar [value]="defense" color="#f44336" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.defense}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+    <div>
+        <span style="font-size: 75%;">Attack:</span>
+        <p-progressbar [value]="attack" color="#ff9800" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.attack}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+    <div>
+        <span style="font-size: 75%;">Speed:</span>
+        <p-progressbar [value]="speed" color="#00bcd4" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.speed}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+    <div>
+        <span style="font-size: 75%;">Luck:</span>
+        <p-progressbar [value]="luck" color="#8bc34a" [showValue]="false"> 
+            <ng-template #content let-value>
+                <span> {{identimon.stats.luck}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+    <div>
+        <span style="font-size: 75%;">Magic:</span>
+        <p-progressbar [value]="magic" color="#9c27b0" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.magic}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+    <div>
+        <span style="font-size: 75%;">Power:</span>
+        <p-progressbar [value]="power" color="#e91e63" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.power}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+    <div>
+        <span style="font-size: 75%;">Mana:</span>
+        <p-progressbar [value]="mana" color="#2196f3" [showValue]="false">
+            <ng-template #content let-value>
+                <span> {{identimon.stats.mana}}/180</span>
+            </ng-template>
+        </p-progressbar>
+    </div>
+
+</div>

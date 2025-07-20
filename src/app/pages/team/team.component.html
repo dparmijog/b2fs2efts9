@@ -1,0 +1,14 @@
+<h3>Equipo Contratado (por nada, no hay currency aun)</h3>
+<div class="flex flex-wrap gap-2 justify-center">
+    
+    <p-card *ngFor="let identimon of identimons()" [style]="{ overflow: 'hidden' }">
+        <ng-template #header>
+            <app-identi-art id={{identimon.id}} />
+        </ng-template>
+        <ng-template #title>{{ identimon.name }}</ng-template>
+        <ng-template #subtitle>
+            <p-tag severity="contrast" [style]="{ backgroundColor: identimon.stats.rarity.color}"
+                value="{{identimon.stats.rarity.type}}" />
+        </ng-template>
+    </p-card>
+</div>
