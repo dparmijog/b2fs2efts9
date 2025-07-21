@@ -4,6 +4,12 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { StyleClassModule } from 'primeng/styleclass';
 
+/**
+ * Toolbar component that displays user information and game statistics
+ * Shows the user's name and coin balance, updating periodically from session data
+ * @class AppToolbar
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-toolbar',
     standalone: true,
@@ -16,9 +22,16 @@ import { StyleClassModule } from 'primeng/styleclass';
     </div>`
 })
 export class AppToolbar implements OnInit {
+    /** Signal containing the user's current coin balance */
     coins = signal<number>(0);
+    
+    /** Signal containing the user's display name */
     name = signal<string>('');
 
+    /**
+     * Angular lifecycle hook that runs after component initialization
+     * Loads user data from session storage and sets up periodic updates for coin balance
+     */
     ngOnInit() {
         localStorage.getItem('session');
         const session = JSON.parse(localStorage.getItem('session') || '{}');

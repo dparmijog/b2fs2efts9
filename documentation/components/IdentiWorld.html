@@ -1,0 +1,1020 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>identi-ng documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">identi-ng documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  IdentiWorld</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/identiworld/identiworld.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../injectables/IdentiWorldService.html" target="_self" >IdentiWorldService</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-identiworld</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>TableModule</code>
+                            <code>FormsModule</code>
+                            <code>ButtonModule</code>
+                            <code>RippleModule</code>
+                            <code>ToastModule</code>
+                            <code>ToolbarModule</code>
+                            <code>RatingModule</code>
+                            <code>InputTextModule</code>
+                            <code>TextareaModule</code>
+                            <code>SelectModule</code>
+                            <code>RadioButtonModule</code>
+                            <code>InputNumberModule</code>
+                            <code>DialogModule</code>
+                            <code>TagModule</code>
+                            <code>InputIconModule</code>
+                            <code>IconFieldModule</code>
+                            <code>ConfirmDialogModule</code>
+                            <code>CardModule</code>
+                                <code><a href="../components/IdentiArtComponent.html" target="_self" >IdentiArtComponent</a></code>
+                                <code><a href="../components/IdentiStatsComponent.html" target="_self" >IdentiStatsComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./identiworld.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#displayDialog" >displayDialog</a>
+                            </li>
+                            <li>
+                                <a href="#identimons" >identimons</a>
+                            </li>
+                            <li>
+                                <a href="#selectedIdentimon" >selectedIdentimon</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeDialog" >closeDialog</a>
+                            </li>
+                            <li>
+                                <a href="#exploreMore" >exploreMore</a>
+                            </li>
+                            <li>
+                                <a href="#hireIdentimon" >hireIdentimon</a>
+                            </li>
+                            <li>
+                                <a href="#loadDemoData" >loadDemoData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#selectIdentimon" >selectIdentimon</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(identiWorldService: <a href="../injectables/IdentiWorldService.html" target="_self">IdentiWorldService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/identiworld/identiworld.ts:60</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>identiWorldService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/IdentiWorldService.html" target="_self" >IdentiWorldService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeDialog"></a>
+                    <span class="name">
+                        <span ><b>closeDialog</b></span>
+                        <a href="#closeDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeDialog()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/pages/identiworld/identiworld.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exploreMore"></a>
+                    <span class="name">
+                        <span ><b>exploreMore</b></span>
+                        <a href="#exploreMore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exploreMore()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/pages/identiworld/identiworld.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hireIdentimon"></a>
+                    <span class="name">
+                        <span ><b>hireIdentimon</b></span>
+                        <a href="#hireIdentimon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hireIdentimon(identimon: <a href="../interfaces/Identimon.html" target="_self">Identimon</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/pages/identiworld/identiworld.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>identimon</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Identimon.html" target="_self" >Identimon</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadDemoData"></a>
+                    <span class="name">
+                        <span ><b>loadDemoData</b></span>
+                        <a href="#loadDemoData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadDemoData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/pages/identiworld/identiworld.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/pages/identiworld/identiworld.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectIdentimon"></a>
+                    <span class="name">
+                        <span ><b>selectIdentimon</b></span>
+                        <a href="#selectIdentimon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectIdentimon(identimon: <a href="../interfaces/Identimon.html" target="_self">Identimon</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/pages/identiworld/identiworld.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>identimon</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Identimon.html" target="_self" >Identimon</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayDialog"></a>
+                    <span class="name">
+                        <span ><b>displayDialog</b></span>
+                        <a href="#displayDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/identiworld/identiworld.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="identimons"></a>
+                    <span class="name">
+                        <span ><b>identimons</b></span>
+                        <a href="#identimons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Identimon[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/pages/identiworld/identiworld.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedIdentimon"></a>
+                    <span class="name">
+                        <span ><b>selectedIdentimon</b></span>
+                        <a href="#selectedIdentimon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Identimon.html" target="_self" >Identimon | undefined</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/pages/identiworld/identiworld.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, signal, ViewChild } from &#x27;@angular/core&#x27;;
+import { ConfirmationService, MessageService } from &#x27;primeng/api&#x27;;
+import { Table, TableModule } from &#x27;primeng/table&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { RippleModule } from &#x27;primeng/ripple&#x27;;
+import { ToastModule } from &#x27;primeng/toast&#x27;;
+import { ToolbarModule } from &#x27;primeng/toolbar&#x27;;
+import { RatingModule } from &#x27;primeng/rating&#x27;;
+import { InputTextModule } from &#x27;primeng/inputtext&#x27;;
+import { TextareaModule } from &#x27;primeng/textarea&#x27;;
+import { SelectModule } from &#x27;primeng/select&#x27;;
+import { RadioButtonModule } from &#x27;primeng/radiobutton&#x27;;
+import { InputNumberModule } from &#x27;primeng/inputnumber&#x27;;
+import { DialogModule } from &#x27;primeng/dialog&#x27;;
+import { TagModule } from &#x27;primeng/tag&#x27;;
+import { InputIconModule } from &#x27;primeng/inputicon&#x27;;
+import { IconFieldModule } from &#x27;primeng/iconfield&#x27;;
+import { ConfirmDialogModule } from &#x27;primeng/confirmdialog&#x27;;
+import { CardModule } from &#x27;primeng/card&#x27;;
+import { IdentiArtComponent } from &#x27;../../identimons/identi.art.component&#x27;;
+import { Identimon, IdentiWorldService } from &#x27;../../service/identiworld.service&#x27;;
+import { IdentiStatsComponent } from &#x27;../../identimons/identi.stats.component&#x27;;
+
+
+@Component({
+    selector: &#x27;app-identiworld&#x27;,
+    standalone: true,
+    imports: [
+        CommonModule,
+        TableModule,
+        FormsModule,
+        ButtonModule,
+        RippleModule,
+        ToastModule,
+        ToolbarModule,
+        RatingModule,
+        InputTextModule,
+        TextareaModule,
+        SelectModule,
+        RadioButtonModule,
+        InputNumberModule,
+        DialogModule,
+        TagModule,
+        InputIconModule,
+        IconFieldModule,
+        ConfirmDialogModule,
+        CardModule,
+        IdentiArtComponent, IdentiStatsComponent
+    ],
+    templateUrl: &#x27;./identiworld.html&#x27;,
+    providers: [IdentiWorldService]
+})
+export class IdentiWorld implements OnInit {
+    identimons &#x3D; signal&lt;Identimon[]&gt;([]);
+
+    selectedIdentimon: Identimon | undefined;
+
+    displayDialog &#x3D; false;
+
+    constructor(
+        private identiWorldService: IdentiWorldService,
+    ) {}
+
+    ngOnInit() {
+        this.loadDemoData();
+    }
+
+    loadDemoData() {
+        this.identiWorldService.getFauna(Math.floor(Math.random() * 12) + 12).then((data) &#x3D;&gt; {
+            this.identimons.set(data);
+        });
+    }
+
+    selectIdentimon(identimon: Identimon) {
+        this.displayDialog &#x3D; true
+        this.selectedIdentimon &#x3D; identimon;
+    }
+
+    closeDialog() {
+        this.displayDialog &#x3D; false;
+        this.selectedIdentimon &#x3D; undefined;
+    }
+
+    exploreMore() {
+        this.loadDemoData();
+        this.displayDialog &#x3D; false;
+        this.selectedIdentimon &#x3D; undefined;
+    }
+
+    hireIdentimon(identimon: Identimon) {
+        const session &#x3D; JSON.parse(localStorage.getItem(&#x27;session&#x27;)!);
+        if (session &amp;&amp; session.user) {
+            const identimons &#x3D; session.user.identimons || [];
+            localStorage.setItem(&#x27;session&#x27;, JSON.stringify({
+                ...session,
+                user: {
+                    ...session.user,
+                    identimons: [...identimons, identimon]
+                }
+            }))
+            this.exploreMore()
+        }
+    }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- &lt;div class&#x3D;&quot;grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4&quot;&gt;
+    
+    &lt;p-card *ngFor&#x3D;&quot;let identimon of identimons()&quot; [style]&#x3D;&quot;{ width: &#x27;25rem&#x27;, overflow: &#x27;hidden&#x27; }&quot;&gt;
+        &lt;ng-template #header&gt;
+            &lt;app-identi-art name&#x3D;{{identimon.name}} /&gt;
+        &lt;/ng-template&gt;
+        &lt;ng-template #title&gt;{{ identimon.name }}&lt;/ng-template&gt;
+         &lt;ng-template #subtitle&gt;{{ identimon.type }}&lt;/ng-template&gt;
+        &lt;p&gt;{{ identimon.description }}&lt;/p&gt; 
+        &lt;ng-template #footer&gt;
+            &lt;div class&#x3D;&quot;flex gap-4 mt-1&quot;&gt;
+                &lt;p-button label&#x3D;&quot;Details&quot; severity&#x3D;&quot;secondary&quot; class&#x3D;&quot;w-full&quot; (onClick)&#x3D;&quot;viewDetails(identimon)&quot; /&gt;
+                &lt;p-button label&#x3D;&quot;Select&quot; class&#x3D;&quot;w-full&quot; (onClick)&#x3D;&quot;selectIdentimon(identimon)&quot; /&gt; 
+            &lt;/div&gt;
+        &lt;/ng-template&gt;
+    &lt;/p-card&gt;
+&lt;/div&gt; --&gt;
+&lt;div class&#x3D;&quot;flex flex-wrap gap-2 justify-center&quot;&gt;
+
+    &lt;p-card *ngFor&#x3D;&quot;let identimon of identimons()&quot; [style]&#x3D;&quot;{ overflow: &#x27;hidden&#x27; }&quot;
+        (click)&#x3D;&quot;selectIdentimon(identimon)&quot;&gt;
+        &lt;ng-template #header&gt;
+            &lt;app-identi-art id&#x3D;{{identimon.id}} /&gt;
+        &lt;/ng-template&gt;
+        &lt;ng-template #title&gt;{{ identimon.name }}&lt;/ng-template&gt;
+        &lt;ng-template #subtitle&gt;
+            &lt;p-tag severity&#x3D;&quot;contrast&quot; [style]&#x3D;&quot;{ backgroundColor: identimon.stats.rarity.color}&quot;
+                value&#x3D;&quot;{{identimon.stats.rarity.type}}&quot; /&gt;
+        &lt;/ng-template&gt;
+    &lt;/p-card&gt;
+    &lt;div class&#x3D;&quot;w-full flex justify-center mt-10&quot; &gt;
+        &lt;p-button label&#x3D;&quot;Explorar &quot; severity&#x3D;&quot;secondary&quot; (click)&#x3D;&quot;exploreMore()&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p-dialog [(visible)]&#x3D;&quot;displayDialog&quot; [modal]&#x3D;&quot;true&quot; dismissableMask&#x3D;&quot;true&quot; closable&#x3D;&quot;true&quot; (onHide)&#x3D;&quot;closeDialog()&quot; showHeader&#x3D;&quot;false&quot;&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;displayDialog &amp;&amp; selectedIdentimon&quot;&gt;
+        
+        &lt;div class&#x3D;&quot;flex flex-col items-center&quot; style&#x3D;&quot;margin-bottom: 36px;&quot;&gt;
+            &lt;div style&#x3D;&quot;width: 100%&quot;&gt;
+                &lt;app-identi-art id&#x3D;&quot;{{selectedIdentimon.id}}&quot; /&gt;
+
+            &lt;/div&gt;
+            
+            &lt;div class&#x3D;&quot;flex flex-col items-center mb-4&quot;&gt;
+                &lt;span style&#x3D;&quot;text-align:center; font-size: 40px; font-weight: 100;&quot;&gt;{{ selectedIdentimon.name}}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex flex-col items-center mb-2&quot;&gt;
+                &lt;p-tag severity&#x3D;&quot;contrast&quot; [style]&#x3D;&quot;{ backgroundColor: selectedIdentimon.stats.rarity.color }&quot;
+                    value&#x3D;&quot;{{selectedIdentimon.stats.rarity.type}} [{{selectedIdentimon.stats.rarity.value}}]&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div style&#x3D;&quot;width: 100%;&quot;&gt;
+                &lt;app-identi-stats id&#x3D;&quot;{{selectedIdentimon.id}}&quot; /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;grow&quot;&gt;&lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;flex justify-center&quot;&gt;
+            &lt;p-button size&#x3D;&quot;large&quot; icon&#x3D;&quot;pi pi-thumbs-up-fill&quot; label&#x3D;&quot;Contratar&quot; severity&#x3D;&quot;success&quot; (click)&#x3D;&quot;hireIdentimon(selectedIdentimon)&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/ng-container&gt;
+
+&lt;/p-dialog&gt;
+
+
+
+
+
+
+
+&lt;!-- &lt;p-card [style]&#x3D;&quot;{ width: &#x27;25rem&#x27;, overflow: &#x27;hidden&#x27; }&quot;&gt;
+    &lt;ng-template #header&gt;
+        &lt;app-identi-art&gt;&lt;/app-identi-art&gt;
+    &lt;/ng-template&gt;
+    &lt;ng-template #title&gt; Advanced Card &lt;/ng-template&gt;
+    &lt;ng-template #subtitle&gt; Card subtitle &lt;/ng-template&gt;
+    &lt;p&gt;
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+    &lt;/p&gt;
+    &lt;ng-template #footer&gt;
+        &lt;div class&#x3D;&quot;flex gap-4 mt-1&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/ng-template&gt;
+&lt;/p-card&gt; --&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">        <p-card *ngFor="let identimon of identimons()" [style]="{ width: \'25rem\', overflow: \'hidden\' }">        <ng-template #header>            <app-identi-art name={{identimon.name}} />        </ng-template>        <ng-template #title>{{ identimon.name }}</ng-template>         <ng-template #subtitle>{{ identimon.type }}</ng-template>        <p>{{ identimon.description }}</p>         <ng-template #footer>            <div class="flex gap-4 mt-1">                <p-button label="Details" severity="secondary" class="w-full" (onClick)="viewDetails(identimon)" />                <p-button label="Select" class="w-full" (onClick)="selectIdentimon(identimon)" />             </div>        </ng-template>    </p-card></div> --><div class="flex flex-wrap gap-2 justify-center">    <p-card *ngFor="let identimon of identimons()" [style]="{ overflow: \'hidden\' }"        (click)="selectIdentimon(identimon)">        <ng-template #header>            <app-identi-art id={{identimon.id}} />        </ng-template>        <ng-template #title>{{ identimon.name }}</ng-template>        <ng-template #subtitle>            <p-tag severity="contrast" [style]="{ backgroundColor: identimon.stats.rarity.color}"                value="{{identimon.stats.rarity.type}}" />        </ng-template>    </p-card>    <div class="w-full flex justify-center mt-10" >        <p-button label="Explorar " severity="secondary" (click)="exploreMore()" />    </div></div><p-dialog [(visible)]="displayDialog" [modal]="true" dismissableMask="true" closable="true" (onHide)="closeDialog()" showHeader="false">    <ng-container *ngIf="displayDialog && selectedIdentimon">                <div class="flex flex-col items-center" style="margin-bottom: 36px;">            <div style="width: 100%">                <app-identi-art id="{{selectedIdentimon.id}}" />            </div>                        <div class="flex flex-col items-center mb-4">                <span style="text-align:center; font-size: 40px; font-weight: 100;">{{ selectedIdentimon.name}}</span>            </div>            <div class="flex flex-col items-center mb-2">                <p-tag severity="contrast" [style]="{ backgroundColor: selectedIdentimon.stats.rarity.color }"                    value="{{selectedIdentimon.stats.rarity.type}} [{{selectedIdentimon.stats.rarity.value}}]" />            </div>            <div style="width: 100%;">                <app-identi-stats id="{{selectedIdentimon.id}}" />            </div>        </div>        <div class="grow"></div>        <div class="flex justify-center">            <p-button size="large" icon="pi pi-thumbs-up-fill" label="Contratar" severity="success" (click)="hireIdentimon(selectedIdentimon)" />        </div>    </ng-container></p-dialog><!-- <p-card [style]="{ width: \'25rem\', overflow: \'hidden\' }">    <ng-template #header>        <app-identi-art></app-identi-art>    </ng-template>    <ng-template #title> Advanced Card </ng-template>    <ng-template #subtitle> Card subtitle </ng-template>    <p>        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!    </p>    <ng-template #footer>        <div class="flex gap-4 mt-1">                    </div>    </ng-template></p-card> --></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigurator', 'selector': 'app-configurator'},{'name': 'AppFloatingConfigurator', 'selector': 'app-floating-configurator'},{'name': 'AppFooter', 'selector': 'app-footer'},{'name': 'AppLayout', 'selector': 'app-layout'},{'name': 'AppMenu', 'selector': 'app-menu'},{'name': 'AppMenuitem', 'selector': '[app-menuitem]'},{'name': 'AppSidebar', 'selector': 'app-sidebar'},{'name': 'AppToolbar', 'selector': 'app-toolbar'},{'name': 'AppTopbar', 'selector': 'app-topbar'},{'name': 'Dashboard', 'selector': 'app-dashboard'},{'name': 'IdentiArtComponent', 'selector': 'app-identi-art'},{'name': 'IdentiStatsComponent', 'selector': 'app-identi-stats'},{'name': 'IdentiWorld', 'selector': 'app-identiworld'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Notfound', 'selector': 'app-notfound'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'Quit', 'selector': 'app-quit'},{'name': 'SignIn', 'selector': 'app-sign-in'},{'name': 'TeamComponent', 'selector': 'app-team'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'IdentiWorld'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'IdentiWorld.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

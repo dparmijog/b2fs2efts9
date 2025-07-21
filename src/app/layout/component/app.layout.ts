@@ -8,6 +8,11 @@ import { AppFooter } from './app.footer';
 import { LayoutService } from '../service/layout.service';
 import { AppToolbar } from "./app.toolbar";
 
+/**
+ * Main layout component that orchestrates the overall application structure
+ * Manages the topbar, sidebar, main content area, and handles responsive menu behavior
+ * @class AppLayout
+ */
 @Component({
     selector: 'app-layout',
     standalone: true,
@@ -27,14 +32,24 @@ import { AppToolbar } from "./app.toolbar";
     </div> `
 })
 export class AppLayout {
+    /** Subscription to overlay menu open events */
     overlayMenuOpenSubscription: Subscription;
 
+    /** Event listener for clicks outside the menu */
     menuOutsideClickListener: any;
 
+    /** Reference to the sidebar component */
     @ViewChild(AppSidebar) appSidebar!: AppSidebar;
 
+    /** Reference to the topbar component */
     @ViewChild(AppTopbar) appTopBar!: AppTopbar;
 
+    /**
+     * Constructor that injects dependencies and sets up menu behavior
+     * @param layoutService - Service for managing layout state
+     * @param renderer - Angular Renderer2 for DOM manipulation
+     * @param router - Angular Router for navigation events
+     */
     constructor(
         public layoutService: LayoutService,
         public renderer: Renderer2,
@@ -59,6 +74,11 @@ export class AppLayout {
         });
     }
 
+    /**
+     * Determines if a click event occurred outside the menu area
+     * @param event - The mouse click event
+     * @returns True if click was outside menu elements
+     */
     isOutsideClicked(event: MouseEvent) {
         const sidebarEl = document.querySelector('.layout-sidebar');
         const topbarEl = document.querySelector('.layout-menu-button');
@@ -67,6 +87,10 @@ export class AppLayout {
         return !(sidebarEl?.isSameNode(eventTarget) || sidebarEl?.contains(eventTarget) || topbarEl?.isSameNode(eventTarget) || topbarEl?.contains(eventTarget));
     }
 
+    /**
+     * Hides the menu and cleans up event listeners
+     * Updates layout state and removes outside click listener
+     */
     hideMenu() {
         this.layoutService.layoutState.update((prev) => ({ ...prev, overlayMenuActive: false, staticMenuMobileActive: false, menuHoverActive: false }));
         if (this.menuOutsideClickListener) {
@@ -76,6 +100,10 @@ export class AppLayout {
         this.unblockBodyScroll();
     }
 
+    /**
+     * Prevents body scrolling when mobile menu is active
+     * Adds CSS class to block scroll behavior
+     */
     blockBodyScroll(): void {
         if (document.body.classList) {
             document.body.classList.add('blocked-scroll');
@@ -84,6 +112,10 @@ export class AppLayout {
         }
     }
 
+    /**
+     * Restores body scrolling when mobile menu is closed
+     * Removes CSS class that blocks scroll behavior
+     */
     unblockBodyScroll(): void {
         if (document.body.classList) {
             document.body.classList.remove('blocked-scroll');
@@ -92,6 +124,11 @@ export class AppLayout {
         }
     }
 
+    /**
+     * Computed property that returns CSS classes for the layout container
+     * Classes change based on menu mode and state
+     * @returns Object with CSS class names as keys and boolean values
+     */
     get containerClass() {
         return {
             'layout-overlay': this.layoutService.layoutConfig().menuMode === 'overlay',
@@ -102,6 +139,10 @@ export class AppLayout {
         };
     }
 
+    /**
+     * Angular lifecycle hook for cleanup when component is destroyed
+     * Unsubscribes from observables and removes event listeners
+     */
     ngOnDestroy() {
         if (this.overlayMenuOpenSubscription) {
             this.overlayMenuOpenSubscription.unsubscribe();

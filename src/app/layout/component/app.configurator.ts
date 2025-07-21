@@ -103,7 +103,7 @@ export class AppConfigurator {
 
     presets = Object.keys(presets);
 
-    showMenuModeButton = signal(!this.router.url.includes('auth'));
+    showMenuModeButton = signal(!this.router.url?.includes('auth'));
 
     menuModeOptions = [
         { label: 'Static', value: 'static' },
@@ -411,9 +411,9 @@ export class AppConfigurator {
 
     updateColors(event: any, type: string, color: any) {
         if (type === 'primary') {
-            this.layoutService.layoutConfig.update((state) => ({ ...state, primary: color.name }));
+            this.layoutService.updateLayoutConfig({ primary: color.name });
         } else if (type === 'surface') {
-            this.layoutService.layoutConfig.update((state) => ({ ...state, surface: color.name }));
+            this.layoutService.updateLayoutConfig({ surface: color.name });
         }
         this.applyTheme(type, color);
 
@@ -429,13 +429,13 @@ export class AppConfigurator {
     }
 
     onPresetChange(event: any) {
-        this.layoutService.layoutConfig.update((state) => ({ ...state, preset: event }));
+        this.layoutService.updateLayoutConfig({ preset: event });
         const preset = presets[event as KeyOfType<typeof presets>];
         const surfacePalette = this.surfaces.find((s) => s.name === this.selectedSurfaceColor())?.palette;
         $t().preset(preset).preset(this.getPresetExt()).surfacePalette(surfacePalette).use({ useDefaultOptions: true });
     }
 
     onMenuModeChange(event: string) {
-        this.layoutService.layoutConfig.update((prev) => ({ ...prev, menuMode: event }));
+        this.layoutService.updateLayoutConfig({ menuMode: event });
     }
 }

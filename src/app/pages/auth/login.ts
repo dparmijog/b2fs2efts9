@@ -11,6 +11,12 @@ import bcrypt from 'bcryptjs'
 import { CommonModule } from '@angular/common';
 import { IdentiMeService } from '../../service/identime.service';
 
+/**
+ * Component responsible for user authentication and login functionality
+ * Provides form validation, password verification, and session management
+ * @class Login
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-login',
     standalone: true,
@@ -47,17 +53,31 @@ import { IdentiMeService } from '../../service/identime.service';
     providers: [IdentiMeService]
 })
 export class Login implements OnInit {
+    /** Reactive form for login credentials */
     loginForm!: FormGroup;
 
+    /** Error message to display to the user */
     error: string = '';
+    
+    /** Success message to display after successful authentication */
     success: string = '';
 
+    /**
+     * Constructor that injects required dependencies
+     * @param formBuilder - Angular FormBuilder for creating reactive forms
+     * @param router - Angular Router for navigation
+     * @param identiMeService - Service for user authentication and data retrieval
+     */
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
         private identiMeService: IdentiMeService
     ) {}
 
+    /**
+     * Angular lifecycle hook that runs after component initialization
+     * Sets up the login form with validation rules and default values
+     */
     ngOnInit() {
         this.loginForm = this.formBuilder.group(
             {
@@ -67,6 +87,12 @@ export class Login implements OnInit {
         );
     }
 
+    /**
+     * Authenticates user credentials against the user database
+     * Validates form input, checks user existence, verifies password, and creates session
+     * Redirects to IdentiWorld on successful authentication
+     * @async
+     */
     async authenticate() {
         this.error = '';
         this.success = '';
@@ -97,6 +123,5 @@ export class Login implements OnInit {
         }
         
         this.success = 'Usuario autenticado';
-        
     }
 }

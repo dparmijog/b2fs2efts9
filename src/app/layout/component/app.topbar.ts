@@ -8,6 +8,12 @@ import { LayoutService } from '../service/layout.service';
 import { IdentiArtComponent } from '../../identimons/identi.art.component';
 import { ulid } from 'ulid';
 
+/**
+ * Top navigation bar component that provides application branding and controls
+ * Contains menu toggle, logo, dark mode toggle, and configuration options
+ * @class AppTopbar
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-topbar',
     standalone: true,
@@ -53,19 +59,31 @@ import { ulid } from 'ulid';
     </div>`
 })
 export class AppTopbar implements OnInit {
+    /** Menu items for the topbar actions */
     items!: MenuItem[];
     
+    /** Signal containing a random hash for animated logo */
     hash = signal<string>("");
 
-
+    /**
+     * Constructor that injects the layout service
+     * @param layoutService - Service for managing layout state and theme
+     */
     constructor(public layoutService: LayoutService) {}
 
+    /**
+     * Toggles between light and dark theme modes
+     * Updates the layout configuration to switch themes
+     */
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
     }
 
+    /**
+     * Angular lifecycle hook that runs after component initialization
+     * Sets up interval to periodically update the animated logo hash
+     */
     ngOnInit(): void {
-
         setInterval(() => {
             this.hash.set(ulid());
         }, 666);

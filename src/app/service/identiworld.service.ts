@@ -2,6 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ulid } from 'ulid';
 
+/**
+ * Converts a string to a numeric value by summing character codes
+ * @param value - The string to convert
+ * @returns The sum of all character codes in the string
+ */
 const convertToNumber = (value: string): number => {
     const nums = value.split("").map((c) => {
         const num = c.charCodeAt(0); // Convert 'a' to 0, 'b' to 1, etc.
@@ -10,8 +15,12 @@ const convertToNumber = (value: string): number => {
     return nums.reduce((acc, curr) => acc + curr, 0); // Convert to a base-26 number
 }
 
+/**
+ * Determines the rarity type based on numeric value
+ * @param value - The numeric value to evaluate
+ * @returns The rarity type as a string
+ */
 const getType = (value: number): string => {
-
     switch (true) {
         case value > 155:
             return "legendary";
@@ -26,9 +35,12 @@ const getType = (value: number): string => {
     }
 }
 
-
+/**
+ * Gets the color associated with a rarity value
+ * @param value - The numeric rarity value
+ * @returns Hex color code for the rarity level
+ */
 const getRarityColor = (value: number): string => {
-
     switch (true) {
         case value > 155:
             return "#F54180"; // Legendary color
@@ -43,6 +55,11 @@ const getRarityColor = (value: number): string => {
     }
 }
 
+/**
+ * Gets the color associated with a specific attribute
+ * @param key - The attribute name
+ * @returns Hex color code for the attribute
+ */
 const getAttributeColor = (key: string) => {
     switch (key) {
         case "life":
@@ -66,31 +83,61 @@ const getAttributeColor = (key: string) => {
     }
 }
 
-
+/**
+ * Interface representing an Identimon creature
+ * @interface Identimon
+ */
 export interface Identimon {
+    /** Unique identifier for the Identimon */
     id?: string;
-    name: string
-    birth: string,
-    random: string,
-    stats: Stats
+    /** Display name of the Identimon */
+    name: string;
+    /** Birth timestamp of the Identimon */
+    birth: string;
+    /** Random identifier used for stat generation */
+    random: string;
+    /** Complete stats object for the Identimon */
+    stats: Stats;
 }
 
+/**
+ * Interface defining all stats for an Identimon
+ * @interface Stats
+ */
 export interface Stats {
+    /** Health points of the Identimon */
     life: number;
+    /** Defensive capability */
     defense: number;
+    /** Attack power */
     attack: number;
+    /** Movement speed */
     speed: number;
+    /** Luck factor affecting various outcomes */
     luck: number;
+    /** Magical power */
     magic: number;
+    /** Physical power */
     power: number;
+    /** Mana points for magical abilities */
     mana: number;
+    /** Rarity information including value, type, and color */
     rarity: {
+        /** Numeric value determining rarity level */
         value: number;
+        /** String representation of rarity (common, uncommon, rare, epic, legendary) */
         type: string;
+        /** Hex color code associated with the rarity */
         color: string;
     };
 }
 
+/**
+ * Creates a new Identimon from a given ID
+ * Generates stats based on portions of the ID string
+ * @param id - The unique identifier to base the Identimon on
+ * @returns A complete Identimon object with generated stats
+ */
 export const createIdentimon = (id: string): Identimon => {
     const average = Math.floor((convertToNumber(id.slice(10, 24))) / 7);
     const stats: Stats = {
@@ -107,8 +154,6 @@ export const createIdentimon = (id: string): Identimon => {
             type: getType(average),
             color: getRarityColor(average)
         },
-        
-
     }
 
     return {
@@ -134,8 +179,18 @@ export const createIdentimon = (id: string): Identimon => {
     }
 }
 
+/**
+ * Service responsible for managing Identimon creatures in the IdentiWorld
+ * Handles generation and retrieval of Identimon fauna
+ * @class IdentiWorldService
+ */
 @Injectable()
 export class IdentiWorldService {
+    /**
+     * Generates a specified number of random Identimon creatures
+     * @param q - The quantity of Identimon to generate
+     * @returns Promise resolving to an array of generated Identimon
+     */
     getFauna(q: number): Promise<Identimon[]> {
         return Promise.resolve(Array.from({ length: q }, (_, i) => {
             const id = ulid()
@@ -143,5 +198,9 @@ export class IdentiWorldService {
         }))
     }
 
+    /**
+     * Constructor that injects the HttpClient dependency
+     * @param http - Angular HTTP client for making API requests
+     */
     constructor(private http: HttpClient) { }
 }

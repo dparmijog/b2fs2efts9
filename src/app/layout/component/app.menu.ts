@@ -4,6 +4,11 @@ import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from './app.menuitem';
 
+/**
+ * Main navigation menu component for the IdentiWorld application
+ * Manages menu items and their visibility based on user authentication state
+ * @class AppMenu
+ */
 @Component({
     selector: 'app-menu',
     standalone: true,
@@ -18,8 +23,13 @@ import { AppMenuitem } from './app.menuitem';
     </ul> `
 })
 export class AppMenu {
+    /** Array of menu items displayed in the navigation */
     model: MenuItem[] = [];
 
+    /**
+     * Angular lifecycle hook that runs after component initialization
+     * Sets up the menu structure with conditional visibility based on user session
+     */
     ngOnInit() {
         const session = localStorage.getItem("session")
 

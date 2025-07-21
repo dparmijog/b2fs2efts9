@@ -1,0 +1,437 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>identi-ng documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">identi-ng documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>IdentiWorld - Angular 19 Application</h1>
+<h2>📋 Descripción del Proyecto</h2>
+<p>IdentiWorld es una aplicación web interactiva construida con Angular 19 que permite a los usuarios explorar y coleccionar criaturas digitales llamadas &quot;Identimons&quot;. La aplicación incluye un sistema de autenticación, gestión de perfiles, y un mundo virtual donde los usuarios pueden descubrir y contratar Identimons únicos.</p>
+<h2>🎯 Características Principales</h2>
+<ul>
+<li><strong>Sistema de Autenticación</strong>: Login y registro de usuarios con encriptación de contraseñas</li>
+<li><strong>Perfil de Usuario</strong>: Gestión de información personal y datos del usuario</li>
+<li><strong>IdentiWorld</strong>: Exploración y contratación de Identimons únicos</li>
+<li><strong>Gestión de Equipo</strong>: Administración de Identimons contratados</li>
+<li><strong>Interfaz Moderna</strong>: UI responsiva con PrimeNG y Tailwind CSS</li>
+<li><strong>Temas Dinámicos</strong>: Soporte para modo claro/oscuro con múltiples presets</li>
+</ul>
+<h2>🛠️ Tecnologías Utilizadas</h2>
+<h3>Frontend</h3>
+<ul>
+<li><strong>Angular 19</strong>: Framework principal de la aplicación</li>
+<li><strong>TypeScript</strong>: Lenguaje de programación tipado</li>
+<li><strong>PrimeNG 19</strong>: Biblioteca de componentes UI</li>
+<li><strong>Tailwind CSS</strong>: Framework de estilos utilitarios</li>
+<li><strong>RxJS</strong>: Programación reactiva</li>
+<li><strong>Chart.js</strong>: Visualización de datos</li>
+</ul>
+<h3>Librerías Adicionales</h3>
+<ul>
+<li><strong>bcryptjs</strong>: Encriptación de contraseñas</li>
+<li><strong>ulid</strong>: Generación de identificadores únicos</li>
+<li><strong>minidenticons</strong>: Generación de avatares únicos</li>
+</ul>
+<h3>Herramientas de Desarrollo</h3>
+<ul>
+<li><strong>ESLint</strong>: Linting de código</li>
+<li><strong>Prettier</strong>: Formateo de código</li>
+<li><strong>Karma &amp; Jasmine</strong>: Testing</li>
+<li><strong>Docker</strong>: Containerización</li>
+</ul>
+<h2>📁 Estructura del Proyecto</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">src/
+├── app/
+│   ├── identimons/           # Componentes relacionados con Identimons
+│   │   ├── identi.art.component.ts      # Generación de arte visual
+│   │   └── identi.stats.component.ts    # Visualización de estadísticas
+│   ├── layout/               # Componentes de layout
+│   │   ├── component/        # Componentes de interfaz
+│   │   │   ├── app.layout.ts
+│   │   │   ├── app.topbar.ts
+│   │   │   ├── app.sidebar.ts
+│   │   │   ├── app.footer.ts
+│   │   │   └── app.configurator.ts
+│   │   └── service/          # Servicios de layout
+│   │       └── layout.service.ts
+│   ├── pages/                # Páginas principales
+│   │   ├── auth/             # Autenticación
+│   │   │   ├── login.ts
+│   │   │   ├── signin.ts
+│   │   │   └── quit.ts
+│   │   ├── dashboard/        # Panel principal
+│   │   ├── identiworld/      # Mundo de Identimons
+│   │   ├── profile/          # Perfil de usuario
+│   │   ├── team/             # Gestión de equipo
+│   │   └── notfound/         # Página 404
+│   └── service/              # Servicios globales
+│       ├── identime.service.ts
+│       └── identiworld.service.ts
+├── assets/                   # Recursos estáticos
+│   ├── layout/               # Estilos de layout
+│   └── demo/                 # Recursos de demostración
+└── styles.scss               # Estilos globales</code></pre></div><h2>🚀 Instalación y Configuración</h2>
+<h3>Prerrequisitos</h3>
+<ul>
+<li>Node.js (versión 18 o superior)</li>
+<li>pnpm (recomendado) o npm</li>
+<li>Angular CLI</li>
+</ul>
+<h3>Pasos de Instalación</h3>
+<ol>
+<li><strong>Clonar el repositorio</strong></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone &lt;url-del-repositorio&gt;
+cd fs2_exp3_s8</code></pre></div><ol start="2">
+<li><strong>Instalar dependencias</strong></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">pnpm install
+# o
+npm install</code></pre></div><ol start="3">
+<li><strong>Ejecutar en modo desarrollo</strong></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">pnpm dev
+# o
+npm run dev</code></pre></div><ol start="4">
+<li><strong>Acceder a la aplicación</strong></li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">http://localhost:4200</code></pre></div><h2>🐳 Docker</h2>
+<h3>Construir imagen Docker</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">docker build -t identiworld .</code></pre></div><h3>Ejecutar contenedor</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">docker run -p 8080:80 identiworld</code></pre></div><h2>📱 Funcionalidades Detalladas</h2>
+<h3>1. Sistema de Autenticación</h3>
+<ul>
+<li><strong>Login</strong> (<code>/auth</code>): Autenticación de usuarios existentes</li>
+<li><strong>Registro</strong> (<code>/register</code>): Creación de nuevas cuentas</li>
+<li><strong>Logout</strong> (<code>/quit</code>): Cierre de sesión con animación</li>
+</ul>
+<h3>2. Dashboard Principal</h3>
+<ul>
+<li>Panel de bienvenida al IdentiWorld</li>
+<li>Navegación principal a todas las funcionalidades</li>
+</ul>
+<h3>3. IdentiWorld (<code>/identiworld</code>)</h3>
+<ul>
+<li>Exploración de Identimons únicos generados dinámicamente</li>
+<li>Visualización de estadísticas detalladas</li>
+<li>Sistema de rareza con colores diferenciados</li>
+<li>Contratación de Identimons para el equipo</li>
+</ul>
+<h3>4. Gestión de Perfil (<code>/profile</code>)</h3>
+<ul>
+<li>Visualización de información personal</li>
+<li>Datos del usuario logueado</li>
+</ul>
+<h3>5. Gestión de Equipo (<code>/team</code>)</h3>
+<ul>
+<li>Administración de Identimons contratados</li>
+<li>Visualización del equipo personal</li>
+</ul>
+<h2>🎨 Sistema de Temas</h2>
+<p>La aplicación incluye un configurador avanzado de temas con:</p>
+<ul>
+<li><strong>Múltiples presets</strong>: Aura, Lara, Nora</li>
+<li><strong>Colores primarios</strong>: Amplia gama de opciones</li>
+<li><strong>Colores de superficie</strong>: Diferentes paletas</li>
+<li><strong>Modo oscuro/claro</strong>: Cambio dinámico</li>
+<li><strong>Modos de menú</strong>: Estático y overlay</li>
+</ul>
+<h2>🔧 Componentes Principales</h2>
+<h3>IdentiArtComponent</h3>
+<p>Genera arte visual único para cada Identimon utilizando la librería <code>minidenticons</code>.</p>
+<h3>IdentiStatsComponent</h3>
+<p>Muestra las estadísticas de los Identimons en barras de progreso:</p>
+<ul>
+<li>Vida (Life)</li>
+<li>Defensa (Defense)</li>
+<li>Ataque (Attack)</li>
+<li>Velocidad (Speed)</li>
+<li>Suerte (Luck)</li>
+<li>Magia (Magic)</li>
+<li>Poder (Power)</li>
+<li>Maná (Mana)</li>
+</ul>
+<h3>LayoutService</h3>
+<p>Gestiona el estado del layout, temas y configuraciones de la interfaz.</p>
+<h3>IdentiWorldService</h3>
+<p>Maneja la generación y gestión de Identimons, incluyendo:</p>
+<ul>
+<li>Creación de criaturas únicas</li>
+<li>Cálculo de estadísticas</li>
+<li>Sistema de rareza</li>
+</ul>
+<h2>🧪 Testing</h2>
+<h3>Ejecutar tests</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">pnpm test
+# o
+npm test</code></pre></div><h3>Tests incluidos</h3>
+<ul>
+<li>Dashboard Component</li>
+<li>Profile Component</li>
+<li>Servicios principales</li>
+</ul>
+<h2>🔧 Scripts Disponibles</h2>
+<ul>
+<li><code>pnpm dev</code>: Ejecuta el servidor de desarrollo</li>
+<li><code>pnpm build</code>: Construye la aplicación para producción</li>
+<li><code>pnpm test</code>: Ejecuta los tests unitarios</li>
+<li><code>pnpm format</code>: Formatea el código con Prettier</li>
+</ul>
+<h2>🌐 Rutas de la Aplicación</h2>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Ruta</th>
+<th>Componente</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>Dashboard</td>
+<td>Página principal</td>
+</tr>
+<tr>
+<td><code>/auth</code></td>
+<td>Login</td>
+<td>Autenticación</td>
+</tr>
+<tr>
+<td><code>/register</code></td>
+<td>SignIn</td>
+<td>Registro</td>
+</tr>
+<tr>
+<td><code>/quit</code></td>
+<td>Quit</td>
+<td>Cierre de sesión</td>
+</tr>
+<tr>
+<td><code>/identiworld</code></td>
+<td>IdentiWorld</td>
+<td>Exploración de Identimons</td>
+</tr>
+<tr>
+<td><code>/profile</code></td>
+<td>ProfileComponent</td>
+<td>Perfil de usuario</td>
+</tr>
+<tr>
+<td><code>/team</code></td>
+<td>TeamComponent</td>
+<td>Gestión de equipo</td>
+</tr>
+<tr>
+<td><code>/notfound</code></td>
+<td>Notfound</td>
+<td>Página 404</td>
+</tr>
+</tbody>
+</table>
+<h2>💾 Almacenamiento de Datos</h2>
+<p>La aplicación utiliza <code>localStorage</code> para persistir:</p>
+<ul>
+<li>Información de usuarios registrados</li>
+<li>Sesión activa del usuario</li>
+<li>Identimons contratados</li>
+<li>Configuraciones de tema</li>
+</ul>
+<h2>🎮 Mecánicas del Juego</h2>
+<h3>Generación de Identimons</h3>
+<ul>
+<li>Cada Identimon se genera con un ULID único</li>
+<li>Las estadísticas se calculan basándose en el ID</li>
+<li>Sistema de rareza: Common, Uncommon, Rare, Epic, Legendary</li>
+</ul>
+<h3>Sistema de Estadísticas</h3>
+<ul>
+<li>8 atributos principales con valores de 0-180</li>
+<li>Colores únicos para cada estadística</li>
+<li>Visualización en barras de progreso</li>
+</ul>
+<h2>🤝 Contribución</h2>
+<p>Para contribuir al proyecto:</p>
+<ol>
+<li>Fork el repositorio</li>
+<li>Crea una rama para tu feature</li>
+<li>Implementa los cambios</li>
+<li>Ejecuta los tests</li>
+<li>Envía un Pull Request</li>
+</ol>
+<h2>📄 Licencia</h2>
+<p>Este proyecto es parte de un ejercicio académico para DUOC UC.</p>
+<h2>👨‍💻 Autor</h2>
+<p><strong>Diego</strong> - Desarrollador principal</p>
+<hr>
+<p>¡Explora el IdentiWorld y descubre criaturas únicas! 🦄✨</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
